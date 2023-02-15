@@ -13,7 +13,7 @@ from pre_commit_dbt.utils import get_models
 from pre_commit_dbt.utils import JsonOpenError
 
 
-def check_model_name_contract(
+def model_name_contract(
     paths: Sequence[str], pattern: str, catalog: Dict[str, Any]
 ) -> int:
     status_code = 0
@@ -50,7 +50,7 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
         print(f"Unable to load catalog file ({e})")
         return 1
 
-    return check_model_name_contract(
+    return model_name_contract(
         paths=args.filenames,
         pattern=args.pattern,
         catalog=catalog,
